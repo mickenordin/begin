@@ -1,0 +1,9 @@
+This is a free implementation of the Cisco ios/asa/catalyst output modifier "begin" released under GNU GPL v.2 or any later version.
+
+http://www.cisco.com/en/US/docs/ios/preface/usingios.html#wp1012384
+
+INSTALLATION
+git clone git://github.com/mickenordin/begin.git
+cd begin
+make
+make install
