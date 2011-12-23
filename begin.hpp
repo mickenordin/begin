@@ -1,7 +1,7 @@
 /*
  * begin.hpp
  * 
- * Copyright 2011 Micke Nordin <micke@hal>
+ * Copyright 2011 Micke Nordin <mik@elnord.in>
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,10 +22,11 @@
 #define begin_h
 #include <iostream>
 #include <string>
+#include <fstream>
 
 
 using namespace std;
 
-void begin(string needle);
+void begin(string needle, istream &in);
 
 #endif

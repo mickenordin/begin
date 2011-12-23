@@ -1,7 +1,7 @@
 /*
  * begin.cxx
  * 
- * Copyright 2011 Micke Nordin <micke@hal>
+ * Copyright 2011 Micke Nordin <mik@elnord.in>
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,20 +23,21 @@
 #include <iostream>
 #include <string>
 #include <boost/xpressive/xpressive.hpp>
+#include <fstream>
 
 using namespace std;
 
-void begin(string needle)
+void begin(string needle, istream &in)
 {
 	string input;
 	boost::xpressive::sregex regex = boost::xpressive::sregex::compile( needle, boost::xpressive::regex_constants::icase );
 
-	while(cin) {
-		getline(cin, input);
+	while(in) {
+		getline(in, input);
 		if ( boost::xpressive::regex_search(input, regex) ) {
 			cout << input << endl;
-			while(cin) {
-				getline(cin,input);
+			while(in) {
+				getline(in,input);
 				cout << input << endl;
 			}
 		}

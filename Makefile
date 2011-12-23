@@ -3,8 +3,8 @@ CFLAGS=-c -g -Wall
 CCFLAGS=-g -Wall 
 prefix=/usr/local
 
-begin : main.o begin.o args.o
-	$(CC) -o begin $(CCFLAGS) main.o begin.o args.o
+begin : main.o begin.o
+	$(CC) -o begin $(CCFLAGS) main.o begin.o
 	
 main.o: main.cxx begin.o 
 	$(CC) $(CFLAGS) main.cxx
@@ -12,9 +12,6 @@ main.o: main.cxx begin.o
 begin.o: begin.cxx begin.hpp
 	$(CC) $(CFLAGS) begin.cxx
 	
-args.o: args.cxx args.hpp
-	$(CC) $(CFLAGS) args.cxx 
-
 install: begin
 	install -m 0755 begin $(prefix)/bin
 
