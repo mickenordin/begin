@@ -2,6 +2,13 @@ This is a free implementation of the Cisco ios/asa/catalyst output modifier "beg
 
 http://www.cisco.com/en/US/docs/ios/preface/usingios.html#wp1012384
 
+DEPENDENCIES
+This program depends on boost/xpressive header only library. On RedHat(-ish) systems do:
+
+yum install boost-devel
+
+before installation
+
 INSTALLATION
 git clone git://github.com/mickenordin/begin.git
 cd begin

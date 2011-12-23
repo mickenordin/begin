@@ -29,8 +29,6 @@ int main(int argc, char **argv)
 {
 	args myargs(argc, argv);
 	
-	myargs.print();
-	
 	if( argc == 2) {
 		begin(argv[1]);
 	}

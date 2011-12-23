@@ -22,16 +22,18 @@
 
 #include <iostream>
 #include <string>
+#include <boost/xpressive/xpressive.hpp>
 
 using namespace std;
 
 void begin(string needle)
 {
 	string input;
-	
+	boost::xpressive::sregex regex = boost::xpressive::sregex::compile( needle, boost::xpressive::regex_constants::icase );
+
 	while(cin) {
 		getline(cin, input);
-		if (input.find(needle) != string::npos) {
+		if ( boost::xpressive::regex_search(input, regex) ) {
 			cout << input << endl;
 			while(cin) {
 				getline(cin,input);
@@ -42,10 +44,4 @@ void begin(string needle)
 
 }
 
-string tolower(string str) {
-	for( unsigned int i = 0; i < str.length(); i++) {
-		str[i] = tolower(str[i]);
-	}
-	return str;
-} 
 

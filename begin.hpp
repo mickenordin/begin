@@ -23,9 +23,9 @@
 #include <iostream>
 #include <string>
 
+
 using namespace std;
 
 void begin(string needle);
-string tolower(string str);
 
 #endif
