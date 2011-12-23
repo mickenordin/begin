@@ -25,4 +25,5 @@ clean:
 
 .PHONY: install
 .PHONY: uninstall
+.PHONY: clean 
 
