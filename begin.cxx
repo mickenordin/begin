@@ -29,14 +29,14 @@ using namespace std;
 
 void begin(string needle, istream &in)
 {
-	string input;
-	boost::xpressive::sregex regex = boost::xpressive::sregex::compile( needle, boost::xpressive::regex_constants::icase );
+	string input; //This is where we keep our input, line by line
+	boost::xpressive::sregex regex = boost::xpressive::sregex::compile( needle, boost::xpressive::regex_constants::icase ); //this is what we search for
 
-	while(in) {
+	while(in) { //loop through input line by line
 		getline(in, input);
-		if ( boost::xpressive::regex_search(input, regex) ) {
-			cout << input << endl;
-			while(in) {
+		if ( boost::xpressive::regex_search(input, regex) ) { //if we find a match
+			cout << input << endl; //start printing to std out
+			while(in) { //and print what remains as well
 				getline(in,input);
 				cout << input << endl;
 			}
