@@ -27,22 +27,26 @@
 
 using namespace std;
 
-void begin(string needle, istream &in)
+int begin(string needle, istream &in)
 {
 	string input; //This is where we keep our input, line by line
 	boost::xpressive::sregex regex = boost::xpressive::sregex::compile( needle, boost::xpressive::regex_constants::icase ); //this is what we search for
-
-	while(in) { //loop through input line by line
-		getline(in, input);
-		if ( boost::xpressive::regex_search(input, regex) ) { //if we find a match
-			cout << input << endl; //start printing to std out
-			while(in) { //and print what remains as well
-				getline(in,input);
-				cout << input << endl;
-			}
-		}
-	}
-
+	if( !in.good() ) { //Check if steam is ok
+		cerr << "Could not open file \n";
+		return 1; //if not return 1
+	} else { //go ahead
+		while(in) { //loop through input line by line
+			getline(in, input);
+			if ( boost::xpressive::regex_search(input, regex) ) { //if we find a match
+				cout << input << endl; //start printing to std out
+				while(in) { //and print what remains as well
+					getline(in,input);
+					cout << input << endl;
+				} //end of inner while
+			} //end of if
+		} //end of outer while
+	} //end of else
+	return 0;
 }
 
 

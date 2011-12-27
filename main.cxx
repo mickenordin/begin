@@ -21,20 +21,24 @@
 
 
 #include <iostream>
+#include <string>
 #include "begin.hpp"
 using namespace std;
 
 int main(int argc, char **argv)
 {
+	int works = 1; //default return value
 	
 	if( argc == 2) { //assume the argument is a regex and to read from std in
-		begin(argv[1], cin);
+		works = begin(argv[1], cin); //try the search
 	} else if( argc == 3) { //assume the first argument is a regex and second is a filename
 		ifstream in(argv[2]);
-		begin(argv[1], in);
-	} else {
-		cout << "Usage: begin <regex> [filename] \n";
+		works = begin(argv[1], in); //try the search
+	} else { //Wrong number of command line args
+		cout <<  "Usage: begin <regex> [filename] \n";
 	}
-	return 0;
+
+	return works;
+
 }
 

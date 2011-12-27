@@ -27,6 +27,6 @@
 
 using namespace std;
 
-void begin(string needle, istream &in);
+int begin(string needle, istream &in);
 
 #endif
