@@ -7,10 +7,16 @@ This program depends on boost/xpressive header only library. On RedHat(-ish) sys
 
 yum install boost-devel
 
+On debian do:
+
+apt-get install libboost-regex-dev
+
 before installation
 
 INSTALLATION
 git clone git://github.com/mickenordin/begin.git
 cd begin
+./autogen.sh
+./configure
 make
 make install
