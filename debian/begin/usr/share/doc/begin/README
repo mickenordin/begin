@@ -1,0 +1,22 @@
+This is a free implementation of the Cisco ios/asa/catalyst output modifier "begin" released under GNU GPL v.2 or any later version.
+
+http://www.cisco.com/en/US/docs/ios/preface/usingios.html#wp1012384
+
+DEPENDENCIES
+This program depends on boost/xpressive header only library. On RedHat(-ish) systems do:
+
+yum install boost-devel
+
+On debian do:
+
+apt-get install libboost-regex-dev
+
+before installation
+
+INSTALLATION
+git clone git://github.com/mickenordin/begin.git
+cd begin
+./autogen.sh
+./configure
+make
+make install
