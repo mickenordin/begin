@@ -2,8 +2,8 @@ Package: begin
 Version: 0.1.1-1
 Architecture: amd64
 Maintainer: Mikael Nordin <mik@elnord.in>
-Installed-Size: 383
-Depends: libc6 (>= 2.2.5), libgcc1 (>= 1:4.1.1), libstdc++6 (>= 4.4.0)
+Installed-Size: 382
+Depends: libc6 (>= 2.4), libgcc1 (>= 1:4.1.1), libstdc++6 (>= 4.4.0)
 Section: text
 Priority: optional
 Homepage: https://github.com/mickenordin/begin
