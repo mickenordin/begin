@@ -1,16 +1,22 @@
 .\" Manpage begin.
 .\" Contact mik@elnord.in to correct errors or typos.
-.TH man 1 "27 January 2013" "1.0" "begin man page"
+.TH man 1 "19 November 2014" "1.1" "begin man page"
 .SH NAME
 begin \- an output modifier
 .SH SYNOPSIS
-begin PATTERN [FILE]
+begin [-j|z|h|?] PATTERN [FILE]
 .SH DESCRIPTION
-begin is an outputmodifer. It works by searching a file (or std out) for a user supplied pattern and then outputs all lines starting from the first line that matches the pattern. A pattern is a simple textstring or a regular expression as defined by Boost xpressive header only library. Check out http://www.boost.org/doc/libs/1_41_0/doc/html/xpressive/user_s_guide.html for more information on how to build ypur regular expression. 
+begin is an outputmodifer. It works by searching a file (or std in) for a user supplied pattern and then outputs all lines starting from the first line that matches the pattern. A pattern is a simple textstring or a regular expression as defined by Boost xpressive header only library. Check out http://www.boost.org/doc/libs/1_41_0/doc/html/xpressive/user_s_guide.html for more information on how to build your regular expression. 
 .SH OPTIONS
-begin does not take any options.
+	-h|?	Show usage
+	-j	Decompress FILE using bz2
+	-z	Decompress FILE using gz 
 .SH EXAMPLE USAGE
 begin "Jan 2[6-7]" /var/log/daemon.log
+
+begin -j "Jan 2[6-7]" /var/log/daemon.log.bz2
+
+begin -z "Jan 2[6-7]" /var/log/daemon.log.gz
 
 cat /var/log/daemon.log | begin "Jan 2[6-7]" 
 .SH SEE ALSO
