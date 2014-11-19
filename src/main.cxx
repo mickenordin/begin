@@ -22,11 +22,38 @@
 
 #include <iostream>
 #include <string>
+#include <unistd.h>
 #include "begin.hpp"
 using namespace std;
 
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
+
+	int c;
+	string usage = "Usage: begin [-z|-j] <regex> [filename] \n";
+	bool gzip = false;
+	bool bzip2 = false;
+	while((c =  getopt(argc, argv, "jhz?")) != EOF) {
+		switch (c) {
+			case 'j':
+				bzip2 = true;
+				break;
+			case 'h':
+				cout << usage;
+				return 1;
+			case 'z':
+				gzip = true;
+				break;
+			case '?':
+				cout << usage;
+				return 1;
+		}
+	}
+
+	if(gzip and bzip2) {
+		cerr << "Please choose only one compression method\n";
+		return 1;
+	}
+
 	int works = 1; //default return value
 	
 	if( argc == 2) { //assume the argument is a regex and to read from std in
@@ -34,8 +61,12 @@ int main(int argc, char **argv)
 	} else if( argc == 3) { //assume the first argument is a regex and second is a filename
 		ifstream in(argv[2]);
 		works = begin(argv[1], in); //try the search
+	} else if(gzip) { // gzip flag is set so we will try to decompress and try the search
+		cout << "Decompressing\n";
+	} else if(bzip2){ // bzip2 flag is set so we will try to decompress and try the search
+		cout << "Decompressing\n";
 	} else { //Wrong number of command line args
-		cout <<  "Usage: begin <regex> [filename] \n";
+		cout <<  usage;
 	}
 
 	return works;
